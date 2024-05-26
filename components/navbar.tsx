@@ -80,8 +80,8 @@ export const Navbar = () => {
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
-          <Button className="bg-blue-100 text-blue-500">Giriş Yap</Button>
-          <Button className="bg-blue-100 text-blue-500">Kayıt Ol</Button>
+          <Button className="bg-orange-600 text-orange-100">Giriş Yap</Button>
+          <Button className="bg-orange-600 text-orange-100">Kayıt Ol</Button>
           {/* <ThemeSwitch /> */}
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}

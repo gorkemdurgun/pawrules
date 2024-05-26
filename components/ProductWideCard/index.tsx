@@ -14,16 +14,7 @@ import {
 } from "react-icons/pi";
 import { motion } from "framer-motion";
 
-type ProductWideCardProps = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  price: number;
-  tags: string[];
-};
-
-export const ProductWideCard = ({ id, title, description, image, price, tags }: ProductWideCardProps) => {
+export const ProductWideCard = ({ id, name, description, image, price, tags }: Product) => {
   return (
     <Card shadow="none">
       <CardBody>
@@ -48,7 +39,7 @@ export const ProductWideCard = ({ id, title, description, image, price, tags }: 
           </motion.div>
 
           <div className="h-full flex flex-col items-start justify-center gap-2 col-span-4 md:col-span-5">
-            <h3 className="font-reddit font-semibold text-foreground/90 text-3xl">{title}</h3>
+            <h3 className="font-reddit font-semibold text-foreground/90 text-3xl">{name}</h3>
             <p className="hidden md:flex text-justify text-small text-foreground/80">{description}</p>
             <div className="hidden md:flex flex-wrap items-center justify-start gap-2 mt-4">
               {tags.map((tag) => (
