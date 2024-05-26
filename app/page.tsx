@@ -109,7 +109,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
         <div className="flex flex-row items-center justify-between w-full">
           <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">ÇOK SATANLAR</h2>
@@ -165,7 +165,6 @@ export default function Home() {
           />
         </div>
       </div>
-            
     </section>
   );
 }

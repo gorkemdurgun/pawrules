@@ -24,6 +24,8 @@ import {
   PiEnvelopeDuotone as GmailIcon,
   PiPawPrintDuotone as LogoIcon,
 } from "react-icons/pi";
+import Image from "next/image";
+import { images } from "@/images";
 
 export const Navbar = () => {
   const searchInput = (
@@ -46,12 +48,14 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
+    <NextUINavbar maxWidth="xl" position="sticky" >
+      <NavbarContent className="basis-1/5 sm:basis-full " justify="start">
+        <NavbarBrand as="li" className="gap-3">
           <NextLink className="flex justify-start items-end gap-1" href="/">
-            <LogoIcon className="text-orange-600 w-8 h-8" />
-            <p className="text-xl text-orange-600 font-reddit font-semibold text-inherit">PAWRULES</p>
+            {/* <div className="relative w-14 h-16">
+              <Image alt="Logo" src={images.Logo} layout="fill" />
+            </div> */}
+            <p className="text-2xl text-orange-600 font-reddit font-semibold text-inherit">PAWRULES</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
