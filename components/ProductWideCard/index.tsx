@@ -27,7 +27,7 @@ export const ProductWideCard = ({ id, title, description, image, price, tags }: 
   return (
     <Card shadow="none">
       <CardBody>
-        <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+        <div className="flex flex-col md:grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
           <motion.div
             className="relative col-span-6 md:col-span-4"
             transition={{ delay: 0.5 }}
@@ -47,10 +47,10 @@ export const ProductWideCard = ({ id, title, description, image, price, tags }: 
             )}
           </motion.div>
 
-          <div className="h-full flex flex-col items-start justify-center gap-2 col-span-4 md:col-span-6">
+          <div className="h-full flex flex-col items-start justify-center gap-2 col-span-4 md:col-span-5">
             <h3 className="font-reddit font-semibold text-foreground/90 text-3xl">{title}</h3>
-            <p className="text-justify text-small text-foreground/80">{description}</p>
-            <div className="flex flex-wrap items-center justify-start gap-2 mt-4">
+            <p className="hidden md:flex text-justify text-small text-foreground/80">{description}</p>
+            <div className="hidden md:flex flex-wrap items-center justify-start gap-2 mt-4">
               {tags.map((tag) => (
                 <Code key={tag} className="bg-gray-100 text-gray-500">
                   #{tag}
@@ -59,11 +59,11 @@ export const ProductWideCard = ({ id, title, description, image, price, tags }: 
             </div>
           </div>
 
-          <div className="h-full flex flex-col items-center justify-start col-span-4 md:col-span-2">
-            <div className="rounded-xl bg-gray-100 py-2 px-6">
+          <div className="h-full w-full flex flex-col items-center justify-start col-span-4 md:col-span-3">
+            <div className="w-full rounded-xl bg-gray-100 py-2 px-6">
               <h2 className="text-gray-900 text-2xl font-semibold">₺ {price}</h2>
             </div>
-            <div className="flex flex-col gap-2 mt-6">
+            <div className="w-full flex flex-col gap-2 mt-6">
               <Button className="flex items-center justify-start gap-2">
                 <AddToCartIcon className="h-6 w-6" />
                 Sepete Ekle

@@ -85,7 +85,7 @@ export default function Home() {
             <div className="w-full lg:w-[200px] flex flex-col items-start gap-2 py-2 px-6 rounded-2xl bg-stone-50 border border-stone-700">
               <div className="flex flex-row items-center justify-center gap-3">
                 <VirusIcon className="h-5 w-5 text-stone-900" />
-                <h4 className="font-semibold text-stone-900 text-md">Sağlıklı Ürünler</h4>
+                <h4 className="font-semibold text-stone-900 text-md">Sağlıklı Ürün</h4>
               </div>
             </div>
             <div className="w-full lg:w-[200px] flex flex-col items-start gap-2 py-2 px-6 rounded-2xl bg-stone-50 border border-stone-700">
@@ -97,7 +97,7 @@ export default function Home() {
             <div className="w-full lg:w-[200px] flex flex-col items-start gap-2 py-2 px-6 rounded-2xl bg-stone-50 border border-stone-700">
               <div className="flex flex-row items-center justify-center gap-3">
                 <CarIcon className="h-5 w-5 text-stone-900" />
-                <h4 className="font-semibold text-stone-900 text-md">Hızlı Teslimat</h4>
+                <h4 className="font-semibold text-stone-900 text-md">Hızlı Teslim</h4>
               </div>
             </div>
             <div className="w-full lg:w-[200px] flex flex-col items-start gap-2 py-2 px-6 rounded-2xl bg-stone-50 border border-stone-700">
@@ -109,7 +109,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/*
+      
       <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
         <div className="flex flex-row items-center justify-between w-full">
           <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">ÇOK SATANLAR</h2>
@@ -165,7 +165,7 @@ export default function Home() {
           />
         </div>
       </div>
-            */}
+            
     </section>
   );
 }
