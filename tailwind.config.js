@@ -11,8 +11,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        mono: ["var(--font-mono)"],
         reddit: ["Reddit Mono", "monospace"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

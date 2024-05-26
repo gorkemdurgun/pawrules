@@ -31,12 +31,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+      </head>
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex flex-col items-center h-full bg-orange-50">
             <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow ">{children}</main>
+            <main className="container mx-auto max-w-7xl pt-8 lg:pt-16 px-6 flex-grow ">{children}</main>
             <footer className="w-full max-w-7xl flex items-center justify-between py-3 px-6">
               <div className="flex items-center gap-2">
                 <p className="text-default-500 text-sm">

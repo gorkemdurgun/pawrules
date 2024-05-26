@@ -91,7 +91,7 @@ const ProductsPage: NextPage = () => {
           label="Tür"
           placeholder="Evcil hayvan türünü seçin"
           selectionMode="multiple"
-          className="max-w-xs font-reddit"
+          className="lg:max-w-xs font-reddit"
           classNames={{
             trigger: "bg-white",
             popoverContent: "bg-white",
@@ -111,7 +111,7 @@ const ProductsPage: NextPage = () => {
           label="Kategori"
           placeholder="Kategori seçin"
           selectionMode="multiple"
-          className="max-w-xs font-reddit"
+          className="lg:max-w-xs font-reddit"
           classNames={{
             trigger: "bg-white",
             popoverContent: "bg-white",
@@ -131,7 +131,7 @@ const ProductsPage: NextPage = () => {
           label="Fiyat Aralığı"
           placeholder="Fiyat aralığını seçin"
           selectionMode="multiple"
-          className="max-w-xs font-reddit"
+          className="lg:max-w-xs font-reddit"
           classNames={{
             trigger: "bg-white",
             popoverContent: "bg-white",
@@ -147,7 +147,7 @@ const ProductsPage: NextPage = () => {
           label="Sıralama"
           placeholder="Sıralama seçin"
           selectionMode="single"
-          className="max-w-xs font-reddit"
+          className="lg:max-w-xs font-reddit"
           classNames={{
             trigger: "bg-white",
             popoverContent: "bg-white",

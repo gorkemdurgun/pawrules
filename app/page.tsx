@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <section className="w-full flex flex-col items-center justify-center gap-12 py-2 lg:py-10">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] w-full gap-8 lg:gap-12">
-        <div className="flex flex-col items-center lg:items-start justify-center gap-2 lg:gap-4">
+        <div className="flex flex-col items-center lg:items-start justify-center gap-4">
           <div className="relative">
             <Money className=" top-4 -right-12 absolute h-12 w-12 text-orange-500 drop-shadow-lg" />
             <h1 className={title({ className: "font-reddit text-default-800 text-4xl lg:text-5xl" })}>Uygun Fiyat</h1>
@@ -48,7 +48,7 @@ export default function Home() {
           <motion.div initial={{ y: 100, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }}>
             <h1 className={title({ color: "yellow", className: "text-5xl lg:text-6xl" })}>PAWRULES</h1>
           </motion.div>
-          <h5 className="text-justify text-default-500 text-lg">
+          <h5 className="text-justify text-default-500 text-sm md:text-lg leading-5">
             %10 İndirim fırsatını kaçırma! Hemen alışverişe başla. Üstüne üstlük yapacağın her alışverişte puan biriktir, sonraki
             alışverişlerinde kullan. <br />
             <div className="flex flex-row items-center justify-center gap-2 mt-4">

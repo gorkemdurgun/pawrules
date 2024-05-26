@@ -10,11 +10,11 @@ import {
   PiArrowRight as SeeAllIcon,
   PiShoppingCartDuotone as AddToCartIcon,
   PiHeartDuotone as FavoriteIcon,
-  PiEyeDuotone as ViewIcon,
+  PiCaretCircleRightDuotone as ViewIcon,
 } from "react-icons/pi";
 import { motion } from "framer-motion";
 
-export const ProductWideCard = ({ id, name, description, image, price, tags }: Product) => {
+export const ProductWideCard = ({ id, name, description, shortDescription, image, price, tags }: Product) => {
   return (
     <Card shadow="none">
       <CardBody>
@@ -41,7 +41,8 @@ export const ProductWideCard = ({ id, name, description, image, price, tags }: P
           <div className="h-full flex flex-col items-start justify-center gap-2 col-span-4 md:col-span-5">
             <h3 className="font-reddit font-semibold text-foreground/90 text-3xl">{name}</h3>
             <p className="hidden md:flex text-justify text-small text-foreground/80">{description}</p>
-            <div className="hidden md:flex flex-wrap items-center justify-start gap-2 mt-4">
+            <p className="md:hidden text-justify text-small text-foreground/80">{shortDescription}</p>
+            <div className="hidden lg:flex flex-wrap items-center justify-start gap-2 mt-4">
               {tags.map((tag) => (
                 <Code key={tag} className="bg-gray-100 text-gray-500">
                   #{tag}
@@ -51,21 +52,21 @@ export const ProductWideCard = ({ id, name, description, image, price, tags }: P
           </div>
 
           <div className="h-full w-full flex flex-col items-center justify-start col-span-4 md:col-span-3">
-            <div className="w-full rounded-xl bg-gray-100 py-2 px-6">
-              <h2 className="text-gray-900 text-2xl font-semibold">₺ {price}</h2>
+            <div className="lg:h-full w-full flex items-center justify-center rounded-xl bg-gray-50 py-2 px-6">
+              <h2 className="text-gray-900 text-2xl lg:text-4xl xl:text-5xl font-poppins font-semibold">₺ {price}</h2>
             </div>
-            <div className="w-full flex flex-col gap-2 mt-6">
-              <Button className="flex items-center justify-start gap-2">
+            <div className="w-full grid grid-cols-3 md:flex md:flex-col gap-2 mt-6">
+              <Button className="flex items-center justify-center md:justify-start gap-2 bg-gray-100 text-gray-900">
                 <AddToCartIcon className="h-6 w-6" />
-                Sepete Ekle
+                <h4 className="hidden sm:flex">Sepete Ekle</h4>
               </Button>
-              <Button className="flex items-center justify-start gap-2">
+              <Button className="flex items-center justify-center md:justify-start gap-2 bg-gray-100 text-gray-900">
                 <FavoriteIcon className="h-6 w-6" />
-                Favorilere Ekle
+                <h4 className="hidden sm:flex">Favorilere Ekle</h4>
               </Button>
-              <Button className="flex items-center justify-start gap-2">
+              <Button className="flex items-center justify-center md:justify-start gap-2 bg-gray-100 text-gray-900">
                 <ViewIcon className="h-6 w-6" />
-                Detayları Gör
+                <h4 className="hidden sm:flex">Detaylar</h4>
               </Button>
             </div>
           </div>
