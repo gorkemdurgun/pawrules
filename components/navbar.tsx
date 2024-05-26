@@ -76,15 +76,8 @@ export const Navbar = () => {
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Instagram" href={siteConfig.links.instagram}>
-            <InstagramIcon className="text-default-500 w-6 h-6 hover:text-pink-600" />
-          </Link>
-          <Link isExternal aria-label="Whatsapp" href={siteConfig.links.whatsapp}>
-            <WhatsappIcon className="text-default-500 w-6 h-6 hover:text-green-600" />
-          </Link>
-          <Link isExternal aria-label="Gmail" href={siteConfig.links.gmail}>
-            <GmailIcon className="text-default-500 w-6 h-6 hover:text-red-600" />
-          </Link>
+          <Button className="bg-blue-100 text-blue-500">Giriş Yap</Button>
+          <Button className="bg-blue-100 text-blue-500">Kayıt Ol</Button>
           {/* <ThemeSwitch /> */}
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
