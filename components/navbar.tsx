@@ -22,7 +22,7 @@ import {
   PiInstagramLogoDuotone as InstagramIcon,
   PiWhatsappLogoDuotone as WhatsappIcon,
   PiEnvelopeDuotone as GmailIcon,
-  PiPawPrintDuotone as LogoIcon,
+  PiCat as LogoIcon,
 } from "react-icons/pi";
 import Image from "next/image";
 import { images } from "@/images";
@@ -51,11 +51,12 @@ export const Navbar = () => {
     <NextUINavbar maxWidth="xl" position="sticky" >
       <NavbarContent className="basis-1/5 sm:basis-full " justify="start">
         <NavbarBrand as="li" className="gap-3">
-          <NextLink className="flex justify-start items-end gap-1" href="/">
+          <NextLink className="flex justify-start items-center gap-1" href="/">
             {/* <div className="relative w-14 h-16">
               <Image alt="Logo" src={images.Logo} layout="fill" />
             </div> */}
-            <p className="text-2xl text-orange-600 font-reddit font-semibold text-inherit">PAWRULES</p>
+            <LogoIcon className="text-3xl text-orange-600" />
+            <h5 className="text-2xl text-orange-600 font-poppins font-semibold">PAWRULES</h5>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>

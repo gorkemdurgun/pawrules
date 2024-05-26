@@ -9,7 +9,7 @@ import {
   PiPhoneCallDuotone as PhoneIcon,
   PiArrowRight as SeeAllIcon,
   PiShoppingCartDuotone as AddToCartIcon,
-  PiHeartDuotone as FavoriteIcon,
+  PiShoppingBagOpenDuotone as QuickBuyIcon,
   PiCaretCircleRightDuotone as ViewIcon,
 } from "react-icons/pi";
 import { motion } from "framer-motion";
@@ -61,8 +61,8 @@ export const ProductWideCard = ({ id, name, description, shortDescription, image
                 <h4 className="hidden sm:flex">Sepete Ekle</h4>
               </Button>
               <Button className="flex items-center justify-center md:justify-start gap-2 bg-gray-100 text-gray-900">
-                <FavoriteIcon className="h-6 w-6" />
-                <h4 className="hidden sm:flex">Favorilere Ekle</h4>
+                <QuickBuyIcon className="h-6 w-6" />
+                <h4 className="hidden sm:flex">Hızlı Satın Al</h4>
               </Button>
               <Button className="flex items-center justify-center md:justify-start gap-2 bg-gray-100 text-gray-900">
                 <ViewIcon className="h-6 w-6" />

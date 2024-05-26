@@ -8,7 +8,7 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon, HeartFilledIcon } from "@/components/icons";
-import { Avatar, Button, Card, CardBody, Image, Input, Kbd, Slider } from "@nextui-org/react";
+import { Accordion, AccordionItem, Avatar, Button, Card, CardBody, Image, Input, Kbd } from "@nextui-org/react";
 import {
   PiCursorClickDuotone as Click,
   PiCurrencyCircleDollarDuotone as Money,
@@ -26,27 +26,63 @@ import {
   PiDogDuotone,
   PiCatDuotone,
   PiBoneDuotone,
+  PiArrowLeft as BackIcon,
+  PiArrowRight as ForwardIcon,
 } from "react-icons/pi";
 import { FaSearch as SearchIcon } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { ProductWideCard } from "@/components";
+import { ProductCard, ProductWideCard, ScrollableList } from "@/components";
 import { fakeProducts } from "@/data/product";
+import { useRef } from "react";
+
+const fakeFaqs = [
+  {
+    id: 1,
+    question: "Ürünlerinizin kalitesi nedir?",
+    answer: "Ürünlerimiz %100 orjinal ve kaliteli ürünlerdir.",
+  },
+  {
+    id: 2,
+    question: "Kargo süreniz nedir?",
+    answer: "Kargo süremiz 1-3 iş günüdür.",
+  },
+  {
+    id: 3,
+    question: "İade süreciniz nasıl işliyor?",
+    answer: "İade sürecimiz oldukça basittir. İade şartlarına uyduğunuz sürece iade alabilirsiniz.",
+  },
+  {
+    id: 4,
+    question: "Siparişimi nasıl takip edebilirim?",
+    answer: "Siparişinizi takip etmek için üye girişi yaparak siparişlerim bölümünden takip edebilirsiniz.",
+  },
+  {
+    id: 5,
+    question: "Kargo ücreti dahil mi?",
+    answer: "Kargo ücreti alıcıya aittir. 150 TL ve üzeri alışverişlerde kargo ücretsizdir.",
+  },
+];
 
 export default function Home() {
   return (
     <section className="w-full flex flex-col items-center justify-center gap-12 py-2 lg:py-10">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] w-full gap-8 lg:gap-12">
+      {/* Hero Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] w-full gap-4 md:gap-8 lg:gap-12">
         <div className="flex flex-col items-center lg:items-start justify-center gap-4">
           <div className="relative">
-            <Money className=" top-4 -right-12 absolute h-12 w-12 text-orange-500 drop-shadow-lg" />
+            <motion.div initial={{ z: -15, x: 15 }} whileInView={{ z: 0, x: 0 }} transition={{ duration: 1 }}>
+              <Money className=" top-4 -right-12 absolute h-12 w-12 text-orange-500 drop-shadow-lg" />
+            </motion.div>
             <h1 className={title({ className: "font-reddit text-default-800 text-4xl lg:text-5xl" })}>Uygun Fiyat</h1>
           </div>
           <div className="relative">
-            <Click className="-top-14 lg:top-0 -left-6 lg:-left-16 absolute h-16 w-16 text-orange-500 drop-shadow-lg" />
+            <motion.div initial={{ z: 15, x: -15 }} whileInView={{ z: 0, x: 0 }} transition={{ duration: 1 }}>
+              <Click className="-top-14 lg:top-0 -left-6 lg:-left-16 absolute h-16 w-16 text-orange-500 drop-shadow-lg " />
+            </motion.div>
             <h1 className={title({ className: "font-reddit text-default-800 text-4xl lg:text-5xl" })}>Kaliteli Hizmet</h1>
           </div>
-          <motion.div initial={{ y: 100, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }}>
-            <h1 className={title({ color: "yellow", className: "text-5xl lg:text-6xl" })}>PAWRULES</h1>
+          <motion.div initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.3 }}>
+            <h1 className={title({ color: "yellow", className: "font-poppins text-5xl lg:text-6xl" })}>PAWRULES</h1>
           </motion.div>
           <h5 className="text-justify text-default-500 text-sm md:text-lg leading-5">
             %10 İndirim fırsatını kaçırma! Hemen alışverişe başla. Üstüne üstlük yapacağın her alışverişte puan biriktir, sonraki
@@ -112,6 +148,46 @@ export default function Home() {
         </div>
       </div>
 
+      {/* New Arrivals */}
+      <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
+        <div className="flex flex-row items-center justify-between w-full">
+          <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">YENİ ÜRÜNLER</h2>
+          <Link href="/products" className="flex items-center gap-2 text-orange-700">
+            Tümünü Gör
+            <SeeAllIcon className="text-orange-700 h-5 w-5" />
+          </Link>
+        </div>
+        <ScrollableList>
+          {fakeProducts
+            .concat(fakeProducts)
+            .concat(fakeProducts)
+            .concat(fakeProducts)
+            .map((product) => (
+              <ProductCard key={product.id} product={product} className="min-w-72" />
+            ))}
+        </ScrollableList>
+      </div>
+
+      {/* New Arrivals */}
+      {/* <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
+        <div className="flex flex-row items-center justify-between w-full">
+          <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">YENİ ÜRÜNLER</h2>
+          <Link href="/products" className="flex items-center gap-2 text-orange-700">
+            Tümünü Gör
+            <SeeAllIcon className="text-orange-700 h-5 w-5" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full">
+          {fakeProducts
+            .sort((a, b) => (b.createdAt as number) - (a.createdAt as number))
+            .slice(0, 4)
+            .map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      </div> */}
+
+      {/* Best Sellers */}
       <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
         <div className="flex flex-row items-center justify-between w-full">
           <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">ÇOK SATANLAR</h2>
@@ -121,10 +197,29 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 w-full">
-          {fakeProducts.map((product) => (
+          {fakeProducts.slice(0, 3).map((product) => (
             <ProductWideCard key={product.id} {...product} />
           ))}
         </div>
+      </div>
+
+      {/* Faqs */}
+      <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-4 py-8 md:py-10">
+        <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">NEYİ MERAK EDİYORSUN?</h2>
+        <Accordion
+          variant="splitted"
+          className="px-0"
+          itemClasses={{
+            title: "font-poppins text-default-800 text-md",
+            content: "font-poppins text-default-500 text-md",
+          }}
+        >
+          {fakeFaqs.map((faq) => (
+            <AccordionItem key={faq.id} title={faq.question}>
+              {faq.answer}
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

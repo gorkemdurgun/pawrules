@@ -6,4 +6,5 @@ type Product = {
   price: number;
   image: string;
   tags: string[];
+  createdAt: number;
 };
