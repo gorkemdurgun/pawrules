@@ -1,5 +1,4 @@
 "use client";
-import 'swiper/css';
 
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";

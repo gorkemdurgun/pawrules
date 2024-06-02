@@ -38,11 +38,11 @@ export const ProductWideCard = ({ id, name, description, shortDescription, image
             )}
           </motion.div>
 
-          <div className="h-full flex flex-col items-start justify-center gap-2 col-span-4 md:col-span-5">
+          <div className="h-full flex flex-col items-start justify-center py-4 gap-2 col-span-4 md:col-span-5">
             <h3 className="font-reddit font-semibold text-foreground/90 text-3xl">{name}</h3>
             <p className="hidden md:flex text-justify text-small text-foreground/80">{description}</p>
             <p className="md:hidden text-justify text-small text-foreground/80">{shortDescription}</p>
-            <div className="hidden lg:flex flex-wrap items-center justify-start gap-2 mt-4">
+            <div className="hidden lg:flex flex-wrap items-center justify-start gap-2 mt-auto mb-0">
               {tags.map((tag) => (
                 <Code key={tag} className="bg-gray-100 text-gray-500">
                   #{tag}

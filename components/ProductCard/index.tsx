@@ -16,7 +16,9 @@ export const ProductCard = ({ className, product }: Props) => {
       <CardHeader>
         <div className="w-full flex flex-col justify-between items-center gap-4 bg-gray-50">
           {image ? (
-            <Image src={image} alt={name} className="w-full h-48 object-cover" />
+            <Image isZoomed
+            
+            src={image} alt={name} className="w-full h-48 object-cover" />
           ) : (
             <Image src={`https://picsum.photos/seed/${id}/800/300`} alt={name} className="w-full h-48 object-cover" />
           )}
