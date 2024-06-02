@@ -21,7 +21,7 @@ export const fakeProducts: Product[] = [
     shortDescription: "Kediler için özel tasarım yatak, ergonomik ve konforlu.",
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki pikachu figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
-    price: 129.99,
+    price: 129,
     features: [
       {
         icon: <ErgonomicIcon className="h-5 w-5" />,
@@ -77,7 +77,7 @@ export const fakeProducts: Product[] = [
     shortDescription: "Kediler için özel tasarım yatak, ergonomik ve konforlu.",
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki charmando figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
-    price: 129.99,
+    price: 129,
     features: [],
     tags: ["kedi", "yatak", "charmando", "kedi yatağı", "kedi yatağı charmando", "kedi yatağı ergonomik", "kedi yatağı konforlu"],
     createdAt: 1633180000000,
@@ -95,17 +95,18 @@ export const fakeProducts: Product[] = [
     shortDescription: "Kediler için özel tasarım yatak, ergonomik ve konforlu.",
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki jigipuff figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
-    price: 129.99,
+    price: 129,
     features: [
-      {
-        icon: <AntibacterialIcon className="h-5 w-5" />,
-        label: "Antibakteriyel",
-        color: "#FFD700",
-      },
       {
         icon: <CottonIcon className="h-5 w-5" />,
         label: "Pamuk",
-        color: "#FFD700",
+        color: "#182747",
+      },
+
+      {
+        icon: <GuaranteedIcon className="h-5 w-5" />,
+        label: "Garantili",
+        color: "#363062",
       },
     ],
     tags: ["kedi", "yatak", "jigipuff", "kedi yatağı", "kedi yatağı jigipuff", "kedi yatağı ergonomik", "kedi yatağı konforlu"],
@@ -124,17 +125,17 @@ export const fakeProducts: Product[] = [
     shortDescription: "Kediler için özel tasarım yatak, ergonomik ve konforlu.",
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki squirtle figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
-    price: 129.99,
+    price: 129,
     features: [
       {
-        icon: <WashableIcon className="h-5 w-5" />,
-        label: "Yıkanabilir",
-        color: "#FFD700",
+        icon: <ErgonomicIcon className="h-5 w-5" />,
+        label: "Ergonomik",
+        color: "#352F44",
       },
       {
-        icon: <GuaranteedIcon className="h-5 w-5" />,
-        label: "Garantili",
-        color: "#FFD700",
+        icon: <AntibacterialIcon className="h-5 w-5" />,
+        label: "Antibakteriyel",
+        color: "#2D033B",
       },
     ],
     tags: ["kedi", "yatak", "squirtle", "kedi yatağı", "kedi yatağı squirtle", "kedi yatağı ergonomik", "kedi yatağı konforlu"],
