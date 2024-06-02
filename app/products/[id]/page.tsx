@@ -1,7 +1,7 @@
 "use client";
 
 import { BreadcrumbItem, Breadcrumbs, Button, Card, Radio, RadioGroup, ScrollShadow, cn } from "@nextui-org/react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PiCaretLeft as ArrowLeftIcon, PiShoppingCart as AddToCartIcon, PiCreditCard as QuickBuyIcon } from "react-icons/pi";
 
@@ -9,6 +9,7 @@ import { fakeProducts } from "@/data/product";
 
 const ProductIdPage = () => {
   const { id } = useParams();
+  const router = useRouter();
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [mainImage, setMainImage] = useState<string | null>(null);
@@ -37,7 +38,7 @@ const ProductIdPage = () => {
   const FeatureBadge = ({ feature }: { feature: ProductFeature }) => {
     return (
       <Card
-        className={`flex flex-row items-center gap-1 px-4 py-2 rounded-full text-sm`}
+        className={`flex flex-row items-center gap-1 px-4 py-2 rounded-full text-xs sm:text-sm`}
         shadow="sm"
         style={{
           backgroundColor: doColorLight(feature.color, 150),
@@ -49,7 +50,6 @@ const ProductIdPage = () => {
       </Card>
     );
   };
-
   const CustomRadio = (props: any) => {
     const { children } = props;
 
@@ -82,26 +82,23 @@ const ProductIdPage = () => {
         <BreadcrumbItem href={`/products/${selectedProduct.id}`}>{selectedProduct?.name}</BreadcrumbItem>
       </Breadcrumbs>
       <div className="w-full flex flex-row items-center justify-between gap-4">
-        <Button className="flex items-center gap-2" variant="light">
+        <Button className="flex items-center gap-2" variant="light" onClick={() => router.back()}>
           <ArrowLeftIcon className="h-5 w-5" />
           Geri Dön
         </Button>
       </div>
       <div className="relative">
-        <Card className="w-full grid grid-cols-[1fr,5fr,5fr] gap-8 py-4 px-8 lg:h-[60vh]" shadow="md">
+        <Card className="w-full grid grid-rows-[1fr-2fr,2fr] md:grid-cols-[1fr,5fr,5fr] gap-4 md:gap-8 py-4 px-8 lg:h-[60vh]" shadow="md">
           {/* Vertical Scrollable Images */}
           <ScrollShadow hideScrollBar>
-            <div className="relative overflow-y-auto flex flex-col gap-3 scrollbar-hide">
+            <div className="relative overflow-auto scrollbar-hide flex flex-row md:flex-col gap-3">
               {selectedProduct?.images.map((image, index) => (
                 <Button
                   key={index}
                   className="relative w-full h-full max-h-28 aspect-square p-0 rounded-xl overflow-hidden"
                   onClick={() => setMainImage(image)}
                 >
-                  <div
-                    className="flex items-center justify-center font-poppins font-semibold text-gray-300 text-l
-                bg-gray-900/25 absolute inset-0 rounded-xl"
-                  >
+                  <div className="flex items-center justify-center font-poppins font-semibold text-gray-300 text-l bg-gray-900/25 absolute inset-0 rounded-xl">
                     {(index + 1).toString()}
                   </div>
                   <img alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={image} />
@@ -114,15 +111,15 @@ const ProductIdPage = () => {
             <img alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={mainImage || ""} />
           </div>
           {/* Product Details */}
-          <div className="flex flex-col gap-3 pt-8">
+          <div className="flex flex-col gap-3 pt-2 md:pt-8">
             <h1 className="font-poppins font-semibold text-gray-800 text-2xl">{selectedProduct?.name}</h1>
-            <p className="font-poppins text-md text-justify text-gray-800">{selectedProduct?.description}</p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <p className="font-poppins text-sm md:text-md text-gray-800">{selectedProduct?.description}</p>
+            <div className="mt-2 flex flex-wrap gap-2 mb-4">
               {selectedProduct?.features?.map((feature, index) => <FeatureBadge feature={feature} key={index} />)}
             </div>
             <RadioGroup
               classNames={{
-                wrapper: "grid grid-cols-4",
+                wrapper: "grid grid-cols-2 lg:grid-cols-4",
               }}
               className="mt-auto"
               orientation="horizontal"
@@ -133,7 +130,7 @@ const ProductIdPage = () => {
               <CustomRadio value="l">L</CustomRadio>
               <CustomRadio value="xl">XL</CustomRadio>
             </RadioGroup>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <Button className="flex items-center gap-2 py-4 text-sm md:text-md" color="default" variant="faded">
                 <QuickBuyIcon className="h-5 w-5" />
                 Hızlı Satın Al
@@ -145,8 +142,8 @@ const ProductIdPage = () => {
             </div>
           </div>
         </Card>
-        <div className="absolute -top-[32px] -right-[32px]">
-          <span className="flex items-center py-4 px-12 gap-2 bg-gray-100 border border-gray-200 rounded-3xl shadow-lg">
+        <div className="absolute -top-[60px] -right-0 md:-top-[32px] md:-right-[32px]">
+          <span className="flex items-center py-2 md:py-4 px-6 md:px-12 gap-2 bg-gray-100 border border-gray-200 rounded-3xl shadow-lg">
             <p className="font-poppins font-semibold text-gray-800 text-2xl lg:text-3xl">{selectedProduct?.price} ₺</p>
           </span>
         </div>

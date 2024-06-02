@@ -24,27 +24,27 @@ export const fakeProducts: Product[] = [
     price: 129,
     features: [
       {
-        icon: <ErgonomicIcon className="h-5 w-5" />,
+        icon: <ErgonomicIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Ergonomik",
         color: "#352F44",
       },
       {
-        icon: <AntibacterialIcon className="h-5 w-5" />,
+        icon: <AntibacterialIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Antibakteriyel",
         color: "#2D033B",
       },
       {
-        icon: <CottonIcon className="h-5 w-5" />,
+        icon: <CottonIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Pamuk",
         color: "#182747",
       },
       {
-        icon: <WashableIcon className="h-5 w-5" />,
+        icon: <WashableIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Yıkanabilir",
         color: "#041C32",
       },
       {
-        icon: <GuaranteedIcon className="h-5 w-5" />,
+        icon: <GuaranteedIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Garantili",
         color: "#363062",
       },
@@ -98,13 +98,13 @@ export const fakeProducts: Product[] = [
     price: 129,
     features: [
       {
-        icon: <CottonIcon className="h-5 w-5" />,
+        icon: <CottonIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Pamuk",
         color: "#182747",
       },
 
       {
-        icon: <GuaranteedIcon className="h-5 w-5" />,
+        icon: <GuaranteedIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Garantili",
         color: "#363062",
       },
@@ -128,12 +128,12 @@ export const fakeProducts: Product[] = [
     price: 129,
     features: [
       {
-        icon: <ErgonomicIcon className="h-5 w-5" />,
+        icon: <ErgonomicIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Ergonomik",
         color: "#352F44",
       },
       {
-        icon: <AntibacterialIcon className="h-5 w-5" />,
+        icon: <AntibacterialIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Antibakteriyel",
         color: "#2D033B",
       },
