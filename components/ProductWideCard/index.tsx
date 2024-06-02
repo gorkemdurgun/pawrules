@@ -14,7 +14,7 @@ import {
 } from "react-icons/pi";
 import { motion } from "framer-motion";
 
-export const ProductWideCard = ({ id, name, description, shortDescription, image, price, tags }: Product) => {
+export const ProductWideCard = ({ id, name, description, shortDescription, images, price, tags }: Product) => {
   return (
     <Card shadow="none">
       <CardBody>
@@ -27,13 +27,13 @@ export const ProductWideCard = ({ id, name, description, shortDescription, image
             }}
             whileInView={{ x: 0 }}
           >
-            {image && (
+            {images[0] && (
               <Image
                 alt="Thumbnail"
                 className="object-cover transition-transform duration-300 ease-in-out"
                 width="100%"
                 height="100%"
-                src={image}
+                src={images[0]}
               />
             )}
           </motion.div>

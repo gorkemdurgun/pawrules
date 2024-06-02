@@ -4,7 +4,14 @@ type Product = {
   shortDescription: string;
   description: string;
   price: number;
-  image: string;
+  images: string[];
+  features?: ProductFeature[];
   tags: string[];
   createdAt: number;
+};
+
+type ProductFeature = {
+  color: string;
+  icon: React.ReactNode;
+  label: string;
 };

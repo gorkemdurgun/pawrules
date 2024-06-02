@@ -1,28 +1,8 @@
 "use client";
 
-import { ProductCard } from "@/components";
-import { title } from "@/components/primitives";
-import { fakeProducts } from "@/data/product";
-import {
-  Select,
-  SelectItem,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Button,
-  SelectSection,
-  Input,
-  Badge,
-  Accordion,
-  AccordionItem,
-  Checkbox,
-  CheckboxGroup,
-  RadioGroup,
-  Radio,
-} from "@nextui-org/react";
+import { Button, Input, Accordion, AccordionItem, Checkbox, CheckboxGroup, RadioGroup, Radio } from "@nextui-org/react";
 import { NextPage } from "next";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaSearch, FaTimes as CrossIcon } from "react-icons/fa";
 import {
@@ -30,96 +10,43 @@ import {
   PiDotsThreeCircleDuotone as OtherIcon,
   PiCatDuotone as CatIcon,
   PiDogDuotone as DogIcon,
-  PiBirdDuotone as BirdIcon,
-  PiFishDuotone as FishIcon,
   PiTennisBallDuotone as ToyIcon,
   PiBedDuotone as BedIcon,
   PiBeltDuotone as AccessoryIcon,
-  PiHandSoapDuotone as CareIcon,
 } from "react-icons/pi";
 
-const fakeTurler = [
-  {
-    section: "Pet",
-    items: [
-      {
-        value: "kedi",
-        label: "Kedi",
-      },
-      {
-        value: "köpek",
-        label: "Köpek",
-      },
-    ],
-  },
-  {
-    section: "Kuş",
-    items: [
-      {
-        value: "muhabbet",
-        label: "Muhabbet Kuşu",
-      },
-      {
-        value: "papağan",
-        label: "Papağan",
-      },
-    ],
-  },
-  {
-    section: "Balık",
-    items: [
-      {
-        value: "beta",
-        label: "Beta",
-      },
-      {
-        value: "moli",
-        label: "Moli",
-      },
-    ],
-  },
-  {
-    section: "Diğer",
-    items: [
-      {
-        value: "tavşan",
-        label: "Tavşan",
-      },
-      {
-        value: "kemirgen",
-        label: "Kemirgen",
-      },
-    ],
-  },
+import { fakeProducts } from "@/data/product";
+import { ProductCard } from "@/components";
+
+const types = [
+  { value: "cat", label: "Kedi", icon: <CatIcon className="h-6 w-6" /> },
+  { value: "dog", label: "Köpek", icon: <DogIcon className="h-6 w-6" /> },
+  { value: "other", label: "Diğer", icon: <OtherIcon className="h-6 w-6" /> },
 ];
-const fakeKategoriler = [
-  { section: "Oyuncak", items: ["Tünel", "Top", "Kedi Çubuğu", "Köpek Oyuncakları"] },
-  { section: "Yatak", items: ["Açık Yatak", "Kapalı Yatak"] },
-  { section: "Mama", items: ["Kuru Mama", "Yaş Mama"] },
-  { section: "Aksesuar", items: ["Tasma", "Ağızlık", "Kemik"] },
-  { section: "Bakım", items: ["Şampuan", "Tarak", "Tıraş Makinesi"] },
-  { section: "Diğer", items: ["Taşıma Çantası", "Kum", "Kedi Kumu"] },
+const categories = [
+  { value: "toy", label: "Oyuncak", icon: <ToyIcon className="h-6 w-6" /> },
+  { value: "bed", label: "Yatak", icon: <BedIcon className="h-6 w-6" /> },
+  {
+    value: "accessory",
+    label: "Aksesuar",
+    icon: <AccessoryIcon className="h-6 w-6" />,
+  },
+  // { value: "care", label: "Bakım", icon: <CareIcon className="h-6 w-6" /> },
 ];
-const fakeFiyatlar = [
-  { value: "0-50", label: "0-50" },
-  { value: "50-100", label: "50-100" },
+const priceRanges = [
+  { value: "0-100", label: "0-100" },
   { value: "100-200", label: "100-200" },
   { value: "200-500", label: "200-500" },
   { value: "500+", label: "500+" },
 ];
-const fakeSiralama = [
-  { value: "en-yuksek", label: "En Yüksek" },
-  { value: "en-dusuk", label: "En Düşük" },
-];
-const fakeSelected = [
-  { category: "Tür", value: "Kedi" },
-  { category: "Tür", value: "Köpek" },
-  { category: "Kategori", value: "Tünel" },
-  { category: "Fiyat Aralığı", value: "50-100" },
-  { category: "Fiyat Aralığı", value: "100-200" },
+const sorts = [
+  { value: "desc", label: "Pahalıdan Ucuza" },
+  { value: "asc", label: "Ucuzdan Pahalıya" },
 ];
 
 const ProductsPage: NextPage = () => {
+  const router = useRouter();
+
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState<string>("");
@@ -133,11 +60,11 @@ const ProductsPage: NextPage = () => {
         </h5>
         <div className="w-full md:w-1/2 flex items-center justify-end gap-4">
           <Input
-            placeholder="Ara..."
             className="w-full "
             classNames={{
               inputWrapper: "bg-white",
             }}
+            placeholder="Ara..."
           />
           <Button className="bg-orange-600 text-white">
             <FaSearch className="h-4 w-4" />
@@ -146,7 +73,13 @@ const ProductsPage: NextPage = () => {
       </div>
       <div className="w-full flex flex-wrap items-center gap-4">
         {selectedTypes.map((item, index) => (
-          <Button key={index} className="bg-white border border-gray-50 text-gray-900 flex items-center gap-2 font-reddit shadow-lg">
+          <Button className="bg-white border border-gray-50 text-gray-900 flex items-center gap-2 font-reddit shadow-lg" key={index}>
+            {selectedTypes.find((type) => type === item)}
+            <CrossIcon className="h-4 w-4 p-1 bg-red-100 text-red-500 rounded-full" />
+          </Button>
+        ))}
+        {selectedCategories.map((item, index) => (
+          <Button className="bg-white border border-gray-50 text-gray-900 flex items-center gap-2 font-reddit shadow-lg" key={index}>
             {item}
             <CrossIcon className="h-4 w-4 p-1 bg-red-100 text-red-500 rounded-full" />
           </Button>
@@ -157,129 +90,94 @@ const ProductsPage: NextPage = () => {
         <div className="w-full lg:w-1/5 flex flex-col gap-4">
           <h3 className="font-poppins font-semibold text-gray-800 text-lg lg:text-xl">Filtrele</h3>
           <Accordion
-            selectionMode="multiple"
-            defaultExpandedKeys={["type", "category", "price", "sort"]}
             className="w-full"
+            defaultExpandedKeys={["type", "category", "price", "sort"]}
             itemClasses={{
               title: "font-reddit text-lg text-default-900",
               indicator: "text-orange-600 font-bold",
             }}
+            selectionMode="multiple"
           >
             {/* Types */}
-            <AccordionItem key="type" title="Tür" indicator={<ArrowLeftIcon className="h-5 w-5" />}>
+            <AccordionItem indicator={<ArrowLeftIcon className="h-5 w-5" />} key="type" title="Tür">
               <CheckboxGroup
-                color="warning"
                 classNames={{
                   wrapper: "grid grid-cols-2 md:flex md:flex-col gap-3 pb-3",
                 }}
+                color="warning"
                 value={selectedTypes}
                 onValueChange={setSelectedTypes}
               >
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="cat"
-                >
-                  <CatIcon className="h-6 w-6" />
-                  Kedi
-                </Checkbox>
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="dog"
-                >
-                  <DogIcon className="h-6 w-6" />
-                  Köpek
-                </Checkbox>
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="other"
-                >
-                  <OtherIcon className="h-6 w-6" />
-                  Diğer
-                </Checkbox>
+                {types.map((type) => (
+                  <Checkbox
+                    classNames={{
+                      label: "flex flex-row items-center gap-2",
+                    }}
+                    key={type.value}
+                    value={type.value}
+                  >
+                    {type.icon}
+                    {type.label}
+                  </Checkbox>
+                ))}
               </CheckboxGroup>
             </AccordionItem>
             {/* Categories */}
-            <AccordionItem key="category" title="Kategori" indicator={<ArrowLeftIcon className="h-5 w-5" />}>
+            <AccordionItem indicator={<ArrowLeftIcon className="h-5 w-5" />} key="category" title="Kategori">
               <CheckboxGroup
-                color="warning"
                 classNames={{
                   wrapper: "grid grid-cols-2 md:flex md:flex-col gap-3 pb-3",
                 }}
+                color="warning"
                 value={selectedCategories}
                 onValueChange={setSelectedCategories}
               >
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="toy"
-                >
-                  <ToyIcon className="h-6 w-6" />
-                  Oyuncak
-                </Checkbox>
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="bed"
-                >
-                  <BedIcon className="h-6 w-6" />
-                  Yatak
-                </Checkbox>
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="accessory"
-                >
-                  <AccessoryIcon className="h-6 w-6" />
-                  Aksesuar
-                </Checkbox>
-                <Checkbox
-                  classNames={{
-                    label: "flex flex-row items-center gap-2",
-                  }}
-                  value="care"
-                >
-                  <CareIcon className="h-6 w-6" />
-                  Bakım
-                </Checkbox>
+                {categories.map((category) => (
+                  <Checkbox
+                    classNames={{
+                      label: "flex flex-row items-center gap-2",
+                    }}
+                    key={category.value}
+                    value={category.value}
+                  >
+                    {category.icon}
+                    {category.label}
+                  </Checkbox>
+                ))}
               </CheckboxGroup>
             </AccordionItem>
             {/* Price */}
-            <AccordionItem key="price" title="Fiyat Aralığı" indicator={<ArrowLeftIcon className="h-5 w-5" />}>
+            <AccordionItem indicator={<ArrowLeftIcon className="h-5 w-5" />} key="price" title="Fiyat Aralığı">
               <RadioGroup
-                color="warning"
                 classNames={{
                   wrapper: "grid grid-cols-2 md:flex md:flex-col gap-3 pb-3",
                 }}
+                color="warning"
                 value={selectedPriceRange}
                 onValueChange={setSelectedPriceRange}
               >
-                <Radio value="0-100">0-100</Radio>
-                <Radio value="100-200">100-200</Radio>
-                <Radio value="200-500">200-500</Radio>
-                <Radio value="500+">500+</Radio>
+                {priceRanges.map((range) => (
+                  <Radio key={range.value} value={range.value}>
+                    {range.label}
+                  </Radio>
+                ))}
               </RadioGroup>
             </AccordionItem>
             {/* Sort */}
-            <AccordionItem key="sort" title="Sıralama" indicator={<ArrowLeftIcon className="h-5 w-5" />}>
+            <AccordionItem indicator={<ArrowLeftIcon className="h-5 w-5" />} key="sort" title="Sıralama">
               <RadioGroup
-                color="warning"
                 classNames={{
                   wrapper: "grid grid-cols-2 md:flex md:flex-col gap-3 pb-3",
                 }}
+                color="warning"
                 value={selectedSort}
                 onValueChange={setSelectedSort}
               >
-                <Radio value="en-yuksek">Pahalıdan Ucuza</Radio>
-                <Radio value="en-dusuk">Ucuzdan Pahalıya</Radio>
+                {sorts.map((sort) => (
+                  <Radio key={sort.value} value={sort.value}>
+                    {sort.label}
+                  </Radio>
+                ))}
               </RadioGroup>
             </AccordionItem>
           </Accordion>

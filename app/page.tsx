@@ -158,13 +158,9 @@ export default function Home() {
           </Link>
         </div>
         <ScrollableList>
-          {fakeProducts
-            .concat(fakeProducts)
-            .concat(fakeProducts)
-            .concat(fakeProducts)
-            .map((product) => (
-              <ProductCard key={product.id} product={product} className="min-w-72" />
-            ))}
+          {fakeProducts.map((product) => (
+            <ProductCard key={product.id} product={product} className="min-w-72" />
+          ))}
         </ScrollableList>
       </div>
 
