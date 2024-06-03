@@ -1,6 +1,6 @@
 "use client";
 
-import { BreadcrumbItem, Breadcrumbs, Button, Card, Input, Pagination, Radio, RadioGroup, ScrollShadow, cn } from "@nextui-org/react";
+import { BreadcrumbItem, Breadcrumbs, Button, Card, Image, Input, Pagination, Radio, RadioGroup, ScrollShadow, cn } from "@nextui-org/react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -75,7 +75,7 @@ const ProductIdPage = () => {
         classNames={{
           base: cn(
             "inline-flex m-0 bg-content1 hover:bg-content2 items-center justify-between",
-            "flex-row-reverse max-w-[300px] cursor-pointer rounded-lg gap-4 py-2 px-4 border-2 border-gray-300",
+            "flex-row-reverse max-w-[300px] cursor-pointer rounded-lg gap-2 py-2 px-4 border-2 border-gray-300",
             "data-[selected=true]:border-orange-300"
           ),
         }}
@@ -130,7 +130,7 @@ const ProductIdPage = () => {
           </ScrollShadow>
           {/* Main Image */}
           <div className="w-full h-full relative rounded-xl overflow-hidden">
-            <img alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={mainImage || ""} />
+            <Image isZoomed alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={mainImage || ""} />
           </div>
           {/* Product Details */}
           <div className="flex flex-col gap-3 pt-2 md:pt-8">
@@ -156,7 +156,7 @@ const ProductIdPage = () => {
             </div>
             <RadioGroup
               classNames={{
-                wrapper: "grid grid-cols-2 lg:grid-cols-4",
+                wrapper: "grid grid-cols-4 lg:grid-cols-4",
               }}
               className="mt-auto"
               orientation="horizontal"
@@ -194,7 +194,7 @@ const ProductIdPage = () => {
           </div>
         </Card>
         {/* Reviews */}
-        <div className="w-full flex flex-col-reverse sm:flex-col gap-4 mt-8 sm:mt-20">
+        <div className="w-full flex flex-col-reverse sm:flex-col gap-4 mt-8 sm:mt-12">
           <div className="flex flex-row-reverse md:flex-row items-center justify-between gap-4">
             <h2 className="hidden sm:flex font-poppins font-semibold text-orange-600 text-2xl">Yorumlar</h2>
             <Pagination color="default" variant="faded" total={10} initialPage={1} />
@@ -247,7 +247,7 @@ const ProductIdPage = () => {
             </Card>
             {/* Review List */}
             <div className="w-full flex flex-col gap-3">
-              {selectedProduct?.reviews?.slice(0, 4).map((review, index) => (
+              {selectedProduct?.reviews?.slice(0, 3).map((review, index) => (
                 <Card key={index} className="flex flex-col gap-2 p-4">
                   <div className="flex items-center gap-2">
                     <span className="font-poppins font-semibold text-gray-800 text-lg">{review.username}</span>
