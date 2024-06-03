@@ -16,7 +16,7 @@ import {
 } from "react-icons/pi";
 
 import { fakeProducts } from "@/data/product";
-import { ProductCard } from "@/components";
+import { ProductSmallCard } from "@/components";
 
 const types = [
   { value: "cat", label: "Kedi", icon: <CatIcon className="h-6 w-6" /> },
@@ -185,7 +185,7 @@ const ProductsPage: NextPage = () => {
         {/* Products */}
         <div className="w-full lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-4 ">
           {fakeProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductSmallCard key={product.id} product={product} onClick={() => router.push(`/products/${product.id}`)} />
           ))}
         </div>
       </div>

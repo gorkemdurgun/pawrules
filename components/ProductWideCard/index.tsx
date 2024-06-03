@@ -21,7 +21,6 @@ export const ProductWideCard = ({ id, name, description, shortDescription, image
         <div className="flex flex-col md:grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
           <motion.div
             className="relative col-span-6 md:col-span-4"
-            transition={{ delay: 0.5 }}
             initial={{
               x: -100,
             }}

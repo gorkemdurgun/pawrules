@@ -1,3 +1,5 @@
 export * from "./ProductWideCard";
-export * from "./ProductCard";
+
+export * from "./ProductDetailCard";
+export * from "./ProductSmallCard";
 export * from "./ScrollableList";

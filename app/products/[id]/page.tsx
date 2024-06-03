@@ -13,23 +13,19 @@ import {
 } from "react-icons/pi";
 
 import { fakeProducts } from "@/data/product";
+import { ProductDetailCard, ProductSmallCard } from "@/components";
 
 const ProductIdPage = () => {
   const { id } = useParams();
   const router = useRouter();
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [mainImage, setMainImage] = useState<string | null>(null);
-  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState<boolean>(false);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   useEffect(() => {
     const product = fakeProducts.find((product) => product.id === id);
 
     if (product) {
       setSelectedProduct(product);
-      setMainImage(product.images[0]);
-      setSelectedSize(product.sizes.find((item) => item.stock > 0)?.size || null);
     } else {
       setSelectedProduct(null);
     }
@@ -110,89 +106,7 @@ const ProductIdPage = () => {
           </span>
         </div>
         {/* Product Card */}
-        <Card className="w-full grid grid-rows-[1fr-2fr,2fr] md:grid-cols-[1fr,5fr,5fr] gap-4 md:gap-8 py-4 px-8 lg:h-[60vh]" shadow="md">
-          {/* Vertical Scrollable Images */}
-          <ScrollShadow hideScrollBar>
-            <div className="relative overflow-auto scrollbar-hide flex flex-row md:flex-col gap-3">
-              {selectedProduct?.images.map((image, index) => (
-                <Button
-                  key={index}
-                  className="relative w-full h-full max-h-28 aspect-square p-0 rounded-xl overflow-hidden"
-                  onClick={() => setMainImage(image)}
-                >
-                  <div className="flex items-center justify-center font-poppins font-semibold text-gray-300 text-l bg-gray-900/25 absolute inset-0 rounded-xl">
-                    {(index + 1).toString()}
-                  </div>
-                  <img alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={image} />
-                </Button>
-              ))}
-            </div>
-          </ScrollShadow>
-          {/* Main Image */}
-          <div className="w-full h-full relative rounded-xl overflow-hidden">
-            <Image isZoomed alt={selectedProduct?.name} className="w-full h-full object-cover rounded-xl" src={mainImage || ""} />
-          </div>
-          {/* Product Details */}
-          <div className="flex flex-col gap-3 pt-2 md:pt-8">
-            <h1 className="font-poppins font-semibold text-gray-800 text-2xl">{selectedProduct?.name}</h1>
-            {isDescriptionExpanded ? (
-              <p className="font-poppins text-sm md:text-md text-gray-800">{selectedProduct?.description}</p>
-            ) : (
-              <div className="flex flex-col items-center gap-2 mb-4 md:mb-0">
-                <p className="font-poppins text-sm md:text-md text-gray-800 line-clamp-3">{selectedProduct?.description}</p>
-                <Button
-                  className="w-full flex items-center gap-2 text-md md:text-lg"
-                  color="default"
-                  variant="light"
-                  onClick={() => setIsDescriptionExpanded(true)}
-                >
-                  <CaretDownIcon className="h-6 w-6" />
-                </Button>
-              </div>
-            )}
-
-            <div className="mt-2 flex flex-wrap gap-2 mb-4">
-              {selectedProduct?.features?.map((feature, index) => <FeatureBadge feature={feature} key={index} />)}
-            </div>
-            <RadioGroup
-              classNames={{
-                wrapper: "grid grid-cols-4 lg:grid-cols-4",
-              }}
-              className="mt-auto"
-              orientation="horizontal"
-              value={selectedSize}
-              onValueChange={(value) => setSelectedSize(value)}
-            >
-              {selectedProduct?.sizes.map((item, index) => (
-                <CustomRadio key={index} value={item.size} count={item.stock} price={item.price}>
-                  {item.size}
-                </CustomRadio>
-              ))}
-            </RadioGroup>
-            <div className="grid grid-cols-1 sm:grid-cols-[1fr,1fr] gap-2">
-              <Input
-                color="warning"
-                variant="faded"
-                className="w-full"
-                type="number"
-                placeholder="1"
-                min={1}
-                max={selectedProduct?.sizes.find((item) => item.size === selectedSize)?.stock}
-                defaultValue="1"
-                startContent={<span className="text-gray-500 text-sm font-poppins">Adet:</span>}
-                endContent={
-                  <span className="whitespace-nowrap text-gray-500 text-sm font-poppins">
-                    {selectedSize ? `Stok: ${selectedProduct?.sizes.find((item) => item.size === selectedSize)?.stock}` : ""}
-                  </span>
-                }
-              />
-              <Button className="flex items-center gap-2 py-2 text-sm md:text-md" color="warning" variant="faded">
-                <AddToCartIcon className="h-5 w-5" />
-                Sepete Ekle
-              </Button>
-            </div>
-          </div>
-        </Card>
+        <ProductDetailCard selectedProduct={selectedProduct} />
         {/* Reviews */}
         <div className="w-full flex flex-col-reverse sm:flex-col gap-4 mt-8 sm:mt-12">
           <div className="flex flex-row-reverse md:flex-row items-center justify-between gap-4">
@@ -274,20 +188,7 @@ const ProductIdPage = () => {
           <h2 className="font-poppins font-semibold text-orange-600 text-2xl">Bunlar da ilginizi çekebilir</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {fakeProducts.map((product, index) => (
-              <Card
-                key={index}
-                className="flex flex-col gap-2"
-                shadow="md"
-                isHoverable
-                isPressable
-                onClick={() => router.push(`/products/${product.id}`)}
-              >
-                <img alt={product.name} className="w-full h-52 object-cover rounded-xl" src={product.images[0]} />
-                <div className="flex flex-col items-start gap-1 px-4 pt-2 pb-4 rounded-b-xl">
-                  <h3 className="font-poppins font-semibold text-gray-800 text-lg">{product.name}</h3>
-                  <p className="font-poppins font-normal text-gray-600 text-md">{product.price} ₺</p>
-                </div>
-              </Card>
+              <ProductSmallCard key={index} product={product} onClick={() => router.push(`/products/${product.id}`)} />
             ))}
           </div>
         </div>

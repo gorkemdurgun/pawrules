@@ -144,10 +144,8 @@ export const fakeProducts: Product[] = [
     id: "3",
     images: [
       "https://ae03.alicdn.com/kf/Sffc72151c9764133b1f209422f4ea0a8B.jpg_640x640q90.jpg",
+      "https://ae03.alicdn.com/kf/S9a1056285f01460c9a7d1389ad8cd8fcV.jpg",
       "https://ae01.alicdn.com/kf/Sb16ab1f31359459599d073636c599f447/Pokemon-Pikachu-pelu-kedi-yata-sevimli-animasyon-tarz-Pet-sepet-yumu-ak-oyuncaklar-Pet-House-k.jpg_.webp",
-      "https://ae03.alicdn.com/kf/Sffc72151c9764133b1f209422f4ea0a8B.jpg_640x640q90.jpg",
-      "https://ae03.alicdn.com/kf/Sffc72151c9764133b1f209422f4ea0a8B.jpg_640x640q90.jpg",
-      "https://ae03.alicdn.com/kf/Sffc72151c9764133b1f209422f4ea0a8B.jpg_640x640q90.jpg",
     ],
     name: "Jigipuff Kedi Yatağı",
     shortDescription: "Kediler için özel tasarım yatak, ergonomik ve konforlu.",

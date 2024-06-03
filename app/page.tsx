@@ -31,9 +31,10 @@ import {
 } from "react-icons/pi";
 import { FaSearch as SearchIcon } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { ProductCard, ProductWideCard, ScrollableList } from "@/components";
+import { ProductSmallCard, ProductWideCard, ScrollableList } from "@/components";
 import { fakeProducts } from "@/data/product";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const fakeFaqs = [
   {
@@ -64,6 +65,8 @@ const fakeFaqs = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <section className="w-full flex flex-col items-center justify-center gap-12 py-2 lg:py-10">
       {/* Hero Section */}
@@ -152,57 +155,22 @@ export default function Home() {
       {/* New Arrivals */}
       <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
         <div className="flex flex-row items-center justify-between w-full">
-          <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">YENİ ÜRÜNLER</h2>
+          <h2 className="font-poppins text-orange-600 text-2xl lg:text-3xl">Yeni Ürünler</h2>
           <Link href="/products" className="flex items-center gap-2 text-orange-700">
             Tümünü Gör
             <SeeAllIcon className="text-orange-700 h-5 w-5" />
           </Link>
         </div>
         <ScrollableList>
-          {fakeProducts.map((product) => (
-            <ProductCard key={product.id} product={product} className="min-w-72" />
+          {fakeProducts.concat(fakeProducts).map((product) => (
+            <ProductSmallCard key={product.id} product={product} onClick={() => router.push(`/products/${product.id}`)} className="min-w-72" />
           ))}
         </ScrollableList>
       </div>
 
-      {/* New Arrivals */}
-      {/* <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
-        <div className="flex flex-row items-center justify-between w-full">
-          <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">YENİ ÜRÜNLER</h2>
-          <Link href="/products" className="flex items-center gap-2 text-orange-700">
-            Tümünü Gör
-            <SeeAllIcon className="text-orange-700 h-5 w-5" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full">
-          {fakeProducts
-            .sort((a, b) => (b.createdAt as number) - (a.createdAt as number))
-            .slice(0, 4)
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-        </div>
-      </div> */}
-
-      {/* Best Sellers */}
-      <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
-        <div className="flex flex-row items-center justify-between w-full">
-          <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">ÇOK SATANLAR</h2>
-          <Link href="/products" className="flex items-center gap-2 text-orange-700">
-            Tümünü Gör
-            <SeeAllIcon className="text-orange-700 h-5 w-5" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 gap-4 w-full">
-          {fakeProducts.slice(0, 3).map((product) => (
-            <ProductWideCard key={product.id} {...product} />
-          ))}
-        </div>
-      </div>
-
       {/* Faqs */}
-      <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-4 py-8 md:py-10">
-        <h2 className="font-reddit text-orange-600 text-2xl lg:text-3xl">NEYİ MERAK EDİYORSUN?</h2>
+      <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-8 py-8 md:py-10">
+        <h2 className="font-poppins text-orange-600 text-2xl lg:text-3xl">Neyi Merak Ediyorsun?</h2>
         <Accordion
           variant="splitted"
           className="px-0"
