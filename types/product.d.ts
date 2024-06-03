@@ -6,8 +6,24 @@ type Product = {
   price: number;
   images: string[];
   features?: ProductFeature[];
+  sizes: ProductSizeStock[];
   tags: string[];
+  reviews: ProductReview[];
   createdAt: number;
+};
+
+type ProductReview = {
+  id: string;
+  username: string;
+  content: string;
+  rating: number;
+  createdAt: number;
+};
+
+type ProductSizeStock = {
+  size: string;
+  stock: number;
+  price: number;
 };
 
 type ProductFeature = {

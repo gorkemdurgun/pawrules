@@ -3,7 +3,7 @@ import {
   PiVirus as AntibacterialIcon,
   PiCloud as CottonIcon,
   PiShower as WashableIcon,
-  PiFileText as GuaranteedIcon,
+  PiCertificate as GuaranteedIcon,
 } from "react-icons/pi";
 
 export const fakeProducts: Product[] = [
@@ -22,6 +22,35 @@ export const fakeProducts: Product[] = [
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki pikachu figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
     price: 129,
+    reviews: [
+      {
+        id: "1",
+        username: "Leyla Y.",
+        content: "Aynı gün kargoya verildi, ertesi gün elime ulaştı. Ürün kalitesi çok iyi.",
+        rating: 5,
+        createdAt: 1633080000000,
+      },
+      {
+        id: "2",
+        username: "Ali K.",
+        content: "Ürünü 1 haftadır kullanıyorum, kedim çok sevdi. Teşekkürler.",
+        rating: 4,
+        createdAt: 1633080000000,
+      },
+      {
+        id: "3",
+        username: "Ayşe T.",
+        content: "Tek beğenmediğim yanı tabanı biraz sert, ama kedim sevdi.",
+        rating: 4,
+        createdAt: 1633080000000,
+      },
+    ],
+    sizes: [
+      { size: "S", stock: 0, price: 129 },
+      { size: "M", stock: 20, price: 149 },
+      { size: "L", stock: 30, price: 169 },
+      { size: "XL", stock: 40, price: 189 },
+    ],
     features: [
       {
         icon: <ErgonomicIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
@@ -78,6 +107,35 @@ export const fakeProducts: Product[] = [
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki charmando figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
     price: 129,
+    sizes: [
+      { size: "S", stock: 10, price: 129 },
+      { size: "M", stock: 0, price: 149 },
+      { size: "L", stock: 30, price: 169 },
+      { size: "XL", stock: 0, price: 189 },
+    ],
+    reviews: [
+      {
+        id: "1",
+        username: "Zeynep A.",
+        content: "Hem görüntüsü hem de kalitesi çok iyi. Kedim çok sevdi.",
+        rating: 5,
+        createdAt: 1633180000000,
+      },
+      {
+        id: "2",
+        username: "Mehmet B.",
+        content: "Kedim yatağa asla girmedi, aslında güzel bir yatak ama beğenmedi.",
+        rating: 3,
+        createdAt: 1633180000000,
+      },
+      {
+        id: "3",
+        username: "Ayşe T.",
+        content: "Yatağın rengi biraz solgun, resimdeki gibi değil.",
+        rating: 3,
+        createdAt: 1633180000000,
+      },
+    ],
     features: [],
     tags: ["kedi", "yatak", "charmando", "kedi yatağı", "kedi yatağı charmando", "kedi yatağı ergonomik", "kedi yatağı konforlu"],
     createdAt: 1633180000000,
@@ -96,13 +154,48 @@ export const fakeProducts: Product[] = [
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki jigipuff figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
     price: 129,
+    sizes: [
+      { size: "S", stock: 0, price: 129 },
+      { size: "M", stock: 0, price: 149 },
+      { size: "L", stock: 0, price: 169 },
+      { size: "XL", stock: 50, price: 189 },
+    ],
+    reviews: [
+      {
+        id: "1",
+        username: "Mehmet A.",
+        content: "Kedim biraz şişko olduğu için XL boyunu aldım, çok rahat etti.",
+        rating: 5,
+        createdAt: 1632980000000,
+      },
+      {
+        id: "2",
+        username: "Ayşe B.",
+        content: "Yeni keşfettim bu markayı, çok kaliteli ürünler yapıyorlarmış. Fiyatına değer.",
+        rating: 5,
+        createdAt: 1632980000000,
+      },
+      {
+        id: "3",
+        username: "Selin C.",
+        content: "İnsanlar neyi bu kadar abartmış anlamadım, sıradan bir yatak.",
+        rating: 2,
+        createdAt: 1632980000000,
+      },
+      {
+        id: "4",
+        username: "Rüzgar D.",
+        content: "Yatağın dikiş kısımları baya kötü, hemen yırtıldı, çöp.",
+        rating: 1,
+        createdAt: 1632980000000,
+      },
+    ],
     features: [
       {
         icon: <CottonIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Pamuk",
         color: "#182747",
       },
-
       {
         icon: <GuaranteedIcon className="h-4 w-4 sm:h-5 sm:w-5" />,
         label: "Garantili",
@@ -126,6 +219,35 @@ export const fakeProducts: Product[] = [
     description:
       "Kediler için özel tasarım yatak, ergonomik ve konforlu. Yapılan testlerde kedilerin bu yatakta uyurken daha mutlu oldukları tespit edilmiştir. Ayrıca yatağın üzerindeki squirtle figürü ile evinizdeki kediye daha eğlenceli bir yaşam sunabilirsiniz. Ürünümüz antibakteriyel özelliklere sahiptir. Tüm kedi ırklarına uygun bir boyuta sahiptir. %100 pamuk malzemeden üretilmiş olup 30 derecede yıkanabilir. Ürünümüz 1 yıl garantilidir.",
     price: 129,
+    sizes: [
+      { size: "S", stock: 10, price: 129 },
+      { size: "M", stock: 20, price: 149 },
+      { size: "L", stock: 30, price: 169 },
+      { size: "XL", stock: 40, price: 189 },
+    ],
+    reviews: [
+      {
+        id: "1",
+        username: "Elif E.",
+        content: "Farklı bir model olduğu için aldım, çok beğendim, kedim pek sevmedi ama :)",
+        rating: 4,
+        createdAt: 1632880000000,
+      },
+      {
+        id: "2",
+        username: "Gökhan F.",
+        content: "Dışı biraz sert ama içi yumuşacık, benimki içinden çıkmıyor.",
+        rating: 4,
+        createdAt: 1632880000000,
+      },
+      {
+        id: "3",
+        username: "Adnan G.",
+        content: "Tam bir fiyat performans ürünü. İndirimde yakaladım, umduğumdan daha iyi çıktı. Tekra buradan alışveriş yapmayı düşünüyorum.",
+        rating: 5,
+        createdAt: 1632880000000,
+      },
+    ],
     features: [
       {
         icon: <ErgonomicIcon className="h-4 w-4 sm:h-5 sm:w-5" />,

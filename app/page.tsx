@@ -114,6 +114,7 @@ export default function Home() {
             <PiPawPrintDuotone className="h-16 w-16 text-stone-600" />
           </div>
           <Image
+            loading="eager"
             fetchPriority="high"
             alt="Hero"
             className="hidden lg:flex z-0 w-full max-h-[600px]"
