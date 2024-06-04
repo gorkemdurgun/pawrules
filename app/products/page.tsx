@@ -53,7 +53,7 @@ const ProductsPage: NextPage = () => {
   const [selectedSort, setSelectedSort] = useState<string>("");
 
   return (
-    <div className="container mx-auto  max-w-7xl min-h-[100vh] flex flex-col items-start gap-8">
+    <div className="container mx-auto  max-w-7xl min-h-[100vh] flex flex-col items-start gap-12 lg:gap-20 pb-24">
       <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-4">
         <h5 className="font-poppins font-semibold text-gray-800 text-2xl lg:text-3xl">
           En güzel ürünlerimizi <span className="text-orange-600">keşfedin</span>
@@ -71,7 +71,7 @@ const ProductsPage: NextPage = () => {
           </Button>
         </div>
       </div>
-      <div className="w-full flex flex-wrap items-center gap-4">
+      <div className={`w-full flex-wrap items-center gap-4 ${selectedTypes.length + selectedCategories.length > 0 ? "flex" : "hidden"}`}>
         {selectedTypes.map((item, index) => (
           <Button className="bg-white border border-gray-50 text-gray-900 flex items-center gap-2 font-reddit shadow-lg" key={index}>
             {selectedTypes.find((type) => type === item)}
@@ -85,13 +85,13 @@ const ProductsPage: NextPage = () => {
           </Button>
         ))}
       </div>
-      <div className="w-full flex flex-col lg:flex-row items-start justify-center gap-4 md:gap-8 py-2 md:py-4">
+      <div className="w-full flex flex-col lg:flex-row items-start justify-center gap-4 md:gap-8">
         {/* Filters */}
         <div className="w-full lg:w-1/5 flex flex-col gap-4">
           <h3 className="font-poppins font-semibold text-gray-800 text-lg lg:text-xl">Filtrele</h3>
           <Accordion
             className="w-full"
-            defaultExpandedKeys={["type", "category", "price", "sort"]}
+            defaultExpandedKeys={["type", "category"]}
             itemClasses={{
               title: "font-reddit text-lg text-default-900",
               indicator: "text-orange-600 font-bold",
@@ -167,7 +167,7 @@ const ProductsPage: NextPage = () => {
             <AccordionItem indicator={<ArrowLeftIcon className="h-5 w-5" />} key="sort" title="Sıralama">
               <RadioGroup
                 classNames={{
-                  wrapper: "grid grid-cols-2 md:flex md:flex-col gap-3 pb-3",
+                  wrapper: "grid grid-cols-1 md:flex md:flex-col gap-3 pb-3",
                 }}
                 color="warning"
                 value={selectedSort}
@@ -183,7 +183,7 @@ const ProductsPage: NextPage = () => {
           </Accordion>
         </div>
         {/* Products */}
-        <div className="w-full lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-4 ">
+        <div className="w-full lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 lg:pt-0">
           {fakeProducts.map((product) => (
             <ProductSmallCard key={product.id} product={product} onClick={() => router.push(`/products/${product.id}`)} />
           ))}

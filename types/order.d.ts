@@ -1,9 +1,33 @@
-type Order = {
-  product: Product;
-  requestedQuantity: number;
-  requestedSize: string;
-  status: OrderStatus;
-  createdAt: number;
+type OrderStatus = "preparing" | "shipped" | "delivered";
+type ShippingInfo = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
 };
 
-type OrderStatus = "pending" | "processing" | "completed" | "cancelled";
+type OrderItem = {
+  productId: string;
+  quantity: number;
+  selectedSize: string;
+};
+
+type ShoppingBasket = {
+  userId?: string;
+  items: OrderItem[];
+};
+
+type Order = {
+  id: string;
+  userId?: string;
+  items: OrderItem[];
+  status: OrderStatus;
+  shippingInfo: ShippingInfo;
+  paymentResponse: {
+    paymentId: string;
+    paymentStatus: string;
+    totalPaid: number;
+  };
+};
