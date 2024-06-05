@@ -165,7 +165,7 @@ export default function Home() {
           onClick={() => router.push("/products?category=cat")}
         >
           <h6 className="font-poppins font-semibold text-orange-600 text-lg lg:text-xl mt-6">Kediler için</h6>
-          <Image src={images.CategoryCat} alt="Kedi" className="mt-auto mx-auto w-32 h-32 max-h-32 transition-all lg:group-hover:scale-110" />
+          <Image src={images.CategoryCat} alt="Kedi" className="mt-auto mx-auto w-auto h-32 max-h-32 transition-all lg:group-hover:scale-110" />
         </Card>
         <Card
           shadow="none"
