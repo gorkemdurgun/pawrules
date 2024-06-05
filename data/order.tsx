@@ -6,6 +6,7 @@ const fakeOrders: Order[] = [
       {
         productId: "1",
         quantity: 2,
+        selectedSize: "M",
       },
     ],
     status: "preparing",
@@ -30,6 +31,7 @@ const fakeOrders: Order[] = [
       {
         productId: "2",
         quantity: 1,
+        selectedSize: "L",
       },
     ],
     status: "shipped",
@@ -54,10 +56,12 @@ const fakeOrders: Order[] = [
       {
         productId: "3",
         quantity: 3,
+        selectedSize: "S",
       },
       {
         productId: "4",
         quantity: 1,
+        selectedSize: "XL",
       },
     ],
     status: "delivered",
